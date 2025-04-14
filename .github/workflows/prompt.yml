@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Call AI model
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
          curl -X POST "https://models.inference.ai.azure.com/chat/completions" \
             -H "Content-Type: application/json" \
@@ -24,3 +26,4 @@ jobs:
                ],
                "model": "gpt-4o"
             }'
+        
